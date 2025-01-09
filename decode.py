@@ -1,24 +1,28 @@
 def main():
-    print("Do you want to turn binary into text or text into binary? (decode/convert)\n")
-    choice = input().lower()
+    print("Do you want to turn binary into text or text into binary? (decode/convert)")
+    choice = input().strip().lower()
 
     if choice == "decode":
         decoder()
     elif choice == "convert":
-        string_to_binary()
-        
-# is very messy, I'll clean up later :333
-def convert()):
-    str = input("Put the text you want to turn to binary!\n")
-    binary = ''.join(format(ord(i), '08b') for i in str)
-    print(binary)
-    
-def decoder():
-    binary = input("Put the Binary code here\n")
-    binlist = binary.split(" ")
+        convert()
+    else:
+        print("not real command, Please choose either 'decode' or 'convert' greg")
 
-    chrlist = []
-    for i in binlist:
-        chrlist.append(chr(int(i,2)))
-    print("".join(chrlist))
-main()
+def convert():
+    text = input("Enter the text you want to convert to binary:\n")
+    binary = ' '.join(format(ord(char), '08b') for char in text)
+    print("Binary code:")
+    print(binary)
+
+def decoder():
+    binary = input("Enter the binary code (use space to separate each byte):\n")
+    try:
+        text = ''.join(chr(int(byte, 2)) for byte in binary.split())
+        print("Decoded text:")
+        print(text)
+    except ValueError:
+        print("Make sure to space and make sure that it's valid plz greg")
+
+if __name__ == "__main__":
+    main()
